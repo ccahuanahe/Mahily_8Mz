@@ -2,56 +2,141 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Para mi amor ❤️</title>
+<title>Para alguien muy especial ❤️</title>
 
 <style>
 
-body{
-    margin:0;
-    font-family: Arial;
-    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
-    text-align:center;
-    color:white;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Segoe UI', sans-serif;
 }
 
-.container{
-    margin-top:80px;
+body{
+background: linear-gradient(135deg,#ff758c,#ff7eb3);
+color:white;
+overflow-x:hidden;
 }
+
+/* SECCIONES */
+
+.section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:40px;
+}
+
+/* TITULO */
 
 h1{
-    font-size:50px;
+font-size:55px;
+margin-bottom:25px;
+letter-spacing:1px;
+animation:fadeIn 2s ease;
 }
 
 p{
-    font-size:22px;
-    width:70%;
-    margin:auto;
+font-size:22px;
+max-width:700px;
+line-height:1.6;
+opacity:0.9;
+animation:fadeIn 3s ease;
 }
 
+/* BOTON */
+
+.btn{
+margin-top:50px;
+padding:16px 40px;
+border:none;
+border-radius:50px;
+font-size:18px;
+background:white;
+color:#ff4d6d;
+cursor:pointer;
+font-weight:bold;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.08);
+}
+
+/* SEGUNDA PAGINA */
+
+#galeria{
+display:none;
+background:#fff;
+color:#333;
+}
+
+/* MENSAJE */
+
+.mensaje{
+font-size:32px;
+font-weight:bold;
+margin-bottom:40px;
+color:#ff4d6d;
+}
+
+/* GALERIA */
+
 .gallery{
-    margin-top:40px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+max-width:1000px;
 }
 
 .gallery img{
-    width:250px;
-    border-radius:15px;
-    margin:10px;
-    box-shadow:0px 10px 20px rgba(0,0,0,0.3);
+width:260px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+transition:0.4s;
 }
 
-button{
-    margin-top:30px;
-    padding:15px 30px;
-    font-size:18px;
-    border:none;
-    border-radius:10px;
-    background:#ff4d6d;
-    color:white;
-    cursor:pointer;
+.gallery img:hover{
+transform:scale(1.08);
 }
 
-button:hover{
-    background:#ff1e4d;
+/* ANIMACIONES */
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* CORAZONES */
+
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-100vh);
+opacity:0;
+}
 }
 
 </style>
@@ -59,21 +144,41 @@ button:hover{
 
 <body>
 
-<div class="container">
+<!-- PRIMERA PANTALLA -->
 
-<h1>Para el amor de mi vida ❤️</h1>
+<section class="section" id="inicio">
+
+<h1>8 de Marzo ❤️</h1>
 
 <p>
-Quería hacer algo especial para ti.
-Gracias por todos los momentos hermosos que hemos vivido juntos.
-Eres la mejor parte de mi vida.
+Hoy quiero dedicarte unas palabras a ti,
+porque eres una mujer increíble,
+fuerte, hermosa y llena de luz.
 </p>
 
-<button onclick="mostrar()">Tengo algo más para ti</button>
+<p style="margin-top:20px;">
+Gracias por existir y por llenar mi vida
+de momentos tan especiales.
+</p>
 
-<div id="mensaje" style="display:none;margin-top:40px;font-size:25px;">
-Te amo muchísimo ❤️
+<button class="btn" onclick="mostrar()">Descubre tu sorpresa</button>
+
+</section>
+
+<!-- SEGUNDA PANTALLA -->
+
+<section class="section" id="galeria">
+
+<div class="mensaje">
+Feliz Día de la Mujer
 </div>
+
+<p style="margin-bottom:40px;">
+Para aquella que me inspira,  
+me llena de orgullo y hace mi vida mejor.
+
+Te amo ❤️
+</p>
 
 <div class="gallery">
 
@@ -83,13 +188,32 @@ Te amo muchísimo ❤️
 
 </div>
 
-</div>
+</section>
 
 <script>
 
 function mostrar(){
-document.getElementById("mensaje").style.display="block";
+document.getElementById("inicio").style.display="none";
+document.getElementById("galeria").style.display="flex";
 }
+
+/* CORAZONES */
+
+function crearCorazon(){
+let heart=document.createElement("div")
+heart.className="heart"
+heart.innerHTML="❤️"
+heart.style.left=Math.random()*100+"%"
+heart.style.fontSize=(20+Math.random()*25)+"px"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{
+heart.remove()
+},6000)
+}
+
+setInterval(crearCorazon,400)
 
 </script>
 
